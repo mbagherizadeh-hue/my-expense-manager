@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مدیریت هزینه‌های من</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>مدیریت هزینه‌های من</h1>
+      <p class="sub">کنترل بهتر هزینه‌ها، مدیریت بهتر زندگی</p>
+    </div>
+    <time id="today" class="today"></time>
+  </header>
+
+  <section class="stats" aria-label="خلاصه هزینه‌ها">
+    <article class="card stat main">
+      <span class="label">مجموع هزینه‌های این ماه</span>
+      <strong id="sMonth">۰</strong><span class="unit">تومان</span>
+    </article>
+    <article class="card stat">
+      <span class="label">تعداد هزینه‌های ثبت‌شده</span>
+      <strong id="sCount">۰</strong><span class="unit">مورد</span>
+    </article>
+    <article class="card stat">
+      <span class="label">میانگین هزینه‌ها</span>
+      <strong id="sAvg">۰</strong><span class="unit">تومان</span>
+    </article>
+  </section>
+
+  <main class="layout">
+    <section class="card form-card">
+      <h2>ثبت هزینه جدید</h2>
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="title">عنوان هزینه</label>
+          <input id="title" maxlength="60" autocomplete="off" placeholder="مثلاً خرید نان">
+          <small class="err" id="eTitle" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="amount">مبلغ (تومان)</label>
+          <input id="amount" inputmode="numeric" autocomplete="off" placeholder="۱۵۰٬۰۰۰">
+          <small class="err" id="eAmount" role="alert"></small>
+        </div>
+        <div class="field">
+          <label for="cat">دسته‌بندی</label>
+          <select id="cat"></select>
+          <small class="err" id="eCat" role="alert"></small>
+        </div>
+        <button class="btn" type="submit">ثبت هزینه</button>
+      </form>
+    </section>
+
+    <section class="card list-card">
+      <div class="list-head">
+        <h2>هزینه‌ها</h2>
+        <div class="filters">
+          <input id="q" type="search" placeholder="جستجوی عنوان" aria-label="جستجوی عنوان هزینه">
+          <select id="fcat" aria-label="فیلتر دسته‌بندی"></select>
+        </div>
+      </div>
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty" hidden></p>
+    </section>
+  </main>
+</div>
+
+<dialog id="dlg">
+  <form method="dialog">
+    <h3>حذف هزینه</h3>
+    <p id="dlgText"></p>
+    <div class="actions">
+      <button class="btn danger" value="ok">حذف</button>
+      <button class="btn ghost" value="cancel" autofocus>انصراف</button>
+    </div>
+  </form>
+</dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
